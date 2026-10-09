@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#123b32">
+  <title>DocuSahayak | Document Preparation Assistant</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <div class="top-strip"><span class="top-dot"></span> INDEPENDENT PUBLIC-SERVICE SUPPORT PROTOTYPE <span class="top-separator">•</span> NOT AN OFFICIAL GOVERNMENT WEBSITE</div>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="DocuSahayak home">
+      <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M13 5h16l9 9v29H13z"/><path d="M29 5v10h9M19 24h13M19 30h13M19 36h8"/></svg></span>
+      <span><strong>DocuSahayak</strong><small>DOCUMENT PREPARATION ASSISTANT</small></span>
+    </a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="#services">Services</a><a href="#checker">Document check</a><a href="#assistant">Ask for help</a>
+    </nav>
+    <a class="header-cta" href="#services">Get started <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="eyebrow-icon">✓</span> CLEAR GUIDANCE. FEWER REPEATED STEPS.</div>
+        <h1>Government applications,<br><span>made easier to prepare.</span></h1>
+        <p class="hero-lede">Understand what documents may be needed, review possible information mismatches, and find your next step before you apply.</p>
+        <div class="hero-actions"><a class="button button-primary" href="#services">Start preparing <span>→</span></a><button class="button button-secondary" id="tryDemoTop" type="button">View sample report</button></div>
+        <div class="hero-assurances"><span><b>✓</b> Simple language</span><span><b>✓</b> Step-by-step support</span><span><b>✓</b> Privacy-conscious</span></div>
+      </div>
+      <aside class="hero-panel" aria-label="How DocuSahayak helps">
+        <div class="panel-top"><span class="panel-icon">▤</span><span class="status-pill"><i></i> PREPARE BEFORE YOU APPLY</span></div>
+        <h2>Your preparation, in three steps</h2>
+        <div class="mini-step"><span class="step-number">01</span><div><strong>Know your checklist</strong><small>See common document categories.</small></div><span class="step-check">✓</span></div>
+        <div class="mini-step"><span class="step-number">02</span><div><strong>Review what you have</strong><small>Check readable files and extracted fields.</small></div><span class="step-check">✓</span></div>
+        <div class="mini-step"><span class="step-number">03</span><div><strong>Understand next steps</strong><small>Get plain-language guidance.</small></div><span class="step-check">→</span></div>
+        <div class="panel-foot"><span class="shield">◇</span> Your files are processed in memory by this prototype and are not saved to disk.</div>
+      </aside>
+    </section>
+
+    <section class="service-section section-wrap" id="services">
+      <div class="section-heading"><div><div class="section-kicker">01 / CHOOSE A SERVICE</div><h2>What are you preparing for?</h2></div><p>Start with a category. Exact requirements vary by scheme and issuing authority.</p></div>
+      <div class="service-grid" id="serviceGrid">
+        <button class="service-card selected" data-scheme="scholarship" type="button"><span class="service-icon">▧</span><span class="service-title">Scholarship</span><span class="service-description">Prepare for student scholarship applications.</span><span class="service-link">View checklist <b>→</b></span></button>
+        <button class="service-card" data-scheme="income" type="button"><span class="service-icon">₹</span><span class="service-title">Income certificate</span><span class="service-description">Understand common supporting documents.</span><span class="service-link">View checklist <b>→</b></span></button>
+        <button class="service-card" data-scheme="general" type="button"><span class="service-icon">▤</span><span class="service-title">Other government service</span><span class="service-description">Get a general application-preparation checklist.</span><span class="service-link">View checklist <b>→</b></span></button>
+      </div>
+      <div class="checklist-panel" id="checklistPanel" aria-live="polite">
+        <div class="checklist-title"><span class="checklist-symbol">✓</span><div><div class="section-kicker">YOUR STARTING CHECKLIST</div><h3 id="checklistTitle">Scholarship application preparation</h3></div></div>
+        <p class="muted" id="checklistNote">Loading checklist…</p>
+        <ul class="checklist-items" id="checklistItems"></ul>
+        <div class="source-note"><span>ⓘ</span><p id="sourceNote">Confirm current requirements on the official portal before applying.</p></div>
+        <div class="checklist-bottom"><span class="review-label">Prototype checklist · not an official list</span><a href="#checker" class="text-link">Review your documents →</a></div>
+      </div>
+    </section>
+
+    <section class="checker-section" id="checker">
+      <div class="section-wrap checker-layout">
+        <div class="checker-intro"><div class="section-kicker light-kicker">02 / REVIEW DOCUMENTS</div><h2>Check before you submit.</h2><p>Upload up to four sample documents. The tool attempts to read selectable PDF text or image text when local OCR is installed, then compares clearly labelled names and dates of birth where it can extract them.</p>
+          <div class="privacy-callout"><span class="privacy-icon">◇</span><div><strong>Use sample files for your demo</strong><p>Files are processed in memory, not saved to disk. Do not upload real Aadhaar numbers, bank details, or other sensitive documents to a hackathon prototype.</p></div></div>
+          <button class="button button-outline-light" id="tryDemo" type="button">Try sample report <span>→</span></button>
+        </div>
+        <div class="upload-card">
+          <div class="upload-card-head"><div><span class="section-kicker">DOCUMENT REVIEW</span><h3>Upload your files</h3></div><span class="file-limit">PDF · JPG · PNG<br>Max 8 MB each</span></div>
+          <form id="uploadForm">
+            <label class="field-label" for="schemeSelect">Preparation category</label>
+            <select id="schemeSelect" name="scheme_id"><option value="scholarship">Scholarship</option><option value="income">Income certificate</option><option value="general">Other government service</option></select>
+            <label class="dropzone" for="documents"><span class="upload-glyph">↑</span><strong>Choose documents to review</strong><span>Choose up to 4 files from your device</span><input id="documents" name="documents" type="file" accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png" multiple></label>
+            <div class="selected-files" id="selectedFiles" aria-live="polite"><span class="empty-file-state">No files selected yet.</span></div>
+            <button class="button button-primary full-width" id="checkButton" type="submit">Review documents <span>→</span></button>
+            <p class="form-hint">This checks extracted text where available. It does not verify authenticity or determine eligibility.</p>
+          </form>
+          <div class="report-area" id="reportArea" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="assistant-section section-wrap" id="assistant">
+      <div class="section-heading"><div><div class="section-kicker">03 / GET GUIDANCE</div><h2>Questions are welcome.</h2></div><p>Ask about checklists, document differences, or how to prepare for the next step.</p></div>
+      <div class="assistant-card">
+        <div class="assistant-sidebar"><div class="assistant-emblem">DS</div><h3>DocuSahayak<br>Assistant</h3><p>Plain-language help for document preparation.</p><div class="assistant-mode"><span class="mode-dot"></span><span id="assistantMode">Local guidance available</span></div><div class="suggestion-label">TRY ASKING</div><button class="suggestion" data-question="Scholarship साठी कोणती कागदपत्रे लागू शकतात?">Scholarship documents <span>↗</span></button><button class="suggestion" data-question="My name or date of birth differs across documents. What should I do?">Name / DOB mismatch <span>↗</span></button><button class="suggestion" data-question="How is my document data handled?">Document privacy <span>↗</span></button></div>
+        <div class="chat-main"><div class="chat-heading"><div><strong>Ask your question</strong><small>English or Marathi</small></div><span class="chat-tag">GUIDANCE ONLY</span></div><div class="chat-messages" id="chatMessages" aria-live="polite"><div class="message bot-message"><span class="message-avatar">DS</span><div><strong>Welcome</strong><p>नमस्कार! I can help you understand document preparation. Ask me a question or choose one of the suggestions.</p><small>Answers are guidance, not official decisions.</small></div></div></div><form id="chatForm" class="chat-form"><label class="sr-only" for="chatInput">Type your question</label><input id="chatInput" maxlength="1000" placeholder="Type your question in English or Marathi…" autocomplete="off"><button id="sendButton" type="submit" aria-label="Send message">Send <span>↑</span></button></form><div class="chat-disclaimer">Please do not enter Aadhaar numbers, passwords, bank details, or other sensitive personal information.</div></div>
+      </div>
+    </section>
+
+    <section class="how-section"><div class="section-wrap"><div class="section-heading"><div><div class="section-kicker">BUILT FOR CLARITY</div><h2>Guidance, not guesswork.</h2></div><p>Designed to help people prepare independently, while keeping official decisions with the relevant authority.</p></div><div class="principle-grid"><div><span>01</span><h3>Understand</h3><p>Start with a simple checklist and a clear explanation of what to verify.</p></div><div><span>02</span><h3>Review</h3><p>Identify potential differences in extracted information, with evidence to inspect.</p></div><div><span>03</span><h3>Act</h3><p>Follow the official instructions for corrections or final submission.</p></div></div></div></section>
+  </main>
+  <footer class="site-footer"><div class="footer-brand"><span class="brand-mark small-mark">DS</span><div><strong>DocuSahayak</strong><small>Independent document-preparation prototype</small></div></div><p>Not affiliated with any government body. Checklist content is illustrative. Verify all current requirements with the official scheme or issuing authority.</p><a href="#home">Back to top ↑</a></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</body>
+</html>
